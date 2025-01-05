@@ -12,7 +12,20 @@ export default function Convertor(){
         'Rs to USD' : 0.010,
         'USD to Rs' : 290,
     }
+
+    const handleConvert = () =>{
+        const rate = conversionRate[conversionDirection];
+        const result = parseFloat(amount) * rate;
+        setConvertedAmount(result.toFixed(2));
+    }
     
+    const toggleConversionDirection = () => {
+        setConversionDirection((prevDirection) =>
+            prevDirection === 'Rs to USD' ? 'USD to Rs' : 'Rs to USD'
+        );
+        setConvertedAmount(null);
+        setAmount('');
+    }
     return(
         <>
         </>

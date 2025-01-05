@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyleSheet } from "react-native"
-import { Button, ToggleButton } from "react-native-paper"
+import { Button, Divider, TextInput, ToggleButton } from "react-native-paper"
 
 export default function Convertor(){
     const [ amount,setAmount ] = useState("");
@@ -28,6 +28,37 @@ export default function Convertor(){
     }
     return(
         <>
+        <View style={styles.header}>
+            <Text variant = 'headlineLarge'> Currency Convertor </Text>
+        </View>
+        <Divider />
+        <View style ={styles.body}>
+            <TextInput
+                label={`Amount in ${conversionDirection.split(' ')[0]}`}
+                mode="outlined"
+                keyboardType="numeric"
+                value={amount}
+                onChangeText={setAmount}
+                style={styles.input}
+            />
+        </View>
+        <View>
+            <Button mode="contained" onPress={handleConvert} style={styles.button}>
+                Convert to {conversionDirection.split(' ')[2]}
+            </Button>
+
+            {convertedAmount && (
+                <Text variant="bodyLarge" style={styles.result}>
+                    {`${amount} ${conversionDirection.split(' ')[0]} = ${convertedAmount} ${conversionDirection.split(' ')[2]}`}
+                </Text>
+            )}
+            <Button mode="outlined" onPress={toggleConversionDirection} style={styles.toggleButton}>
+                    Switch to {conversionDirection === 'Rs to USD' ? 'USD to Rs' : 'Rs to USD'}
+                </Button>
+            </View>
+            <View style={styles.footer}>
+            <Text variant='bodyMedium'>Made by: IT3133 Practical Sessions</Text>
+            </View>
         </>
     )
 }

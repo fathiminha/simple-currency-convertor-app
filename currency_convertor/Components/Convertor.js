@@ -1,7 +1,18 @@
+import { useState } from "react";
 import { StyleSheet } from "react-native"
 import { Button, ToggleButton } from "react-native-paper"
 
 export default function Convertor(){
+    const [ amount,setAmount ] = useState("");
+    const [ convertedAmount, setConvertedAmount ] = useState(null);
+    const [ conversionDirection, setConversionDirection ] = useState('Rs to USD');
+    const [ result, setResult ] = useState("");
+
+    const conversionRate = {
+        'Rs to USD' : 0.010,
+        'USD to Rs' : 290,
+    }
+    
     return(
         <>
         </>
